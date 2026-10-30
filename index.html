@@ -5,11 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>UFO Detector</title>
     <link rel="stylesheet" href="style.css">
+    <!-- I load GSAP and Howler as classic scripts here, before the
+         module below. Classic scripts in the head run during parsing
+         and module scripts run after it, so by the time script.js
+         checks for these libraries the answer is final: loaded or
+         not, with no race in between. -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
     <script type="module" src="script.js"></script>
 </head>
 <body>
+    <!-- script.js looks up the blip and message elements by these
+         exact ids. Renaming one here without renaming it there
+         leaves the page standing but dead. -->
     <div id="detector-container">
         <div id="radar">
             <div id="scan-line"></div>

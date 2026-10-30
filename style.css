@@ -1,5 +1,8 @@
 body {
     font-family: sans-serif;
+    /* I center the detector with flex on the body and a full height
+       minimum, so the radar sits in the middle of any window size
+       without fixed margins doing the work. */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -14,6 +17,10 @@ body {
 }
 
 #radar {
+    /* position: relative makes this circle the anchor for the scan
+       line and the blip, which are placed absolutely inside it.
+       overflow: hidden is what keeps the rotating scan square
+       clipped to the circle instead of spilling over the page. */
     position: relative;
     width: 200px;
     height: 200px;
@@ -25,6 +32,11 @@ body {
 }
 
 #scan-line {
+    /* The sweep is a full size square with a left to right gradient,
+       spun around its own center by the keyframes below. The bright
+       band in the middle of the gradient is what reads as the sweep
+       arm; there is no separate arm element. The radar's border
+       radius and overflow do the round clipping. */
     position: absolute;
     top: 0;
     left: 0;
@@ -44,8 +56,13 @@ body {
     height: 10px;
     background-color: red;
     border-radius: 50%;
+    /* The translate centers the dot on the radar's middle instead of
+       hanging its top left corner there. One catch I know about:
+       GSAP writes its own transform when it scales the blip during
+       a detection, which replaces this centering while the pulse
+       runs, so the dot can sit off center until the pulse ends. */
     transform: translate(-50%, -50%);
-    opacity: 0; /* Hidden initially */
+    opacity: 0; /* Hidden initially, and script.js only raises it during a detection */
 }
 
 
