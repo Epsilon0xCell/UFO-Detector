@@ -32,18 +32,46 @@ hidden directly instead.
   the message returns to `Scanning for UFOs...` and scanning resumes.
 - An ambient loop starts on page load when Howler loaded. Browsers may
   hold audio until the first interaction with the page.
+- The blip is centered on the radar with negative margins, half its
+  10px size. It used to be centered with a CSS translate, and GSAP
+  writes its own transform when it scales the blip for the pulse, so
+  the centering could be replaced for the length of a detection and
+  the dot could sit off center while it pulsed. Margins are not a
+  transform, so the pulse cannot replace them now. That fault was
+  logged as suspected and never observed in a browser; the fix
+  removes the conflict in the stylesheet itself rather than waiting
+  to catch it on screen.
+
+## Tests
+
+```bash
+node --test
+```
+
+10 tests, all passing, in `detector.test.mjs`. They load the real
+`script.js` in Node with stubbed document, window, and timer
+objects: the 3.5 second check and 0.5 second roll delay, a missed
+roll, a detection with GSAP (pulse values and the 3 second reset),
+a detection without GSAP (the blip shown and hidden directly),
+ticks dropped during a detection, both sounds built and the
+ambient loop started when Howler is present, detection still
+working when Howler is missing or a sound throws on play, the
+margin centering above, and the ids and CDN scripts in
+`index.html` that the script depends on.
 
 ## Files
 
 - `index.html` - the page
 - `script.js` - scan loop, detection roll, sounds, and blip animation
 - `style.css` - layout and the radar sweep animation
+- `detector.test.mjs` - the node:test suite
 - `LICENSE` - MIT license
 - `logo.png`, `banner.png` - project branding
 
 ## Honest limits
 
-The logic was verified headlessly in Node with mocked document, timer,
-GSAP, and Howler objects, including the cases where one or both CDN
-libraries are missing. It was not run in a real browser for this pass, so
-the visual result and the actual audio playback were not observed.
+The logic is verified headlessly by the suite above, including the
+cases where one or both CDN libraries are missing. The page was not
+run in a real browser for this pass, so the visual result (the
+centered blip included) and the actual audio playback were not
+observed on screen.

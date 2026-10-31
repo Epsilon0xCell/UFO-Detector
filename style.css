@@ -54,14 +54,20 @@ body {
     left: 50%;
     width: 10px;
     height: 10px;
+    /* The negative margins, half the dot's size, center it on the
+       radar's middle instead of hanging its top left corner there.
+       I center with margins rather than a translate transform on
+       purpose: GSAP writes its own transform when it scales the
+       blip during a detection, and a transform it writes would
+       replace a centering translate for the length of the pulse,
+       so the dot could sit off center while it pulsed. Margins are
+       not a transform, so GSAP cannot replace them, and the pulse
+       scales around the dot's own center, so the dot stays in the
+       middle of the radar for the whole detection. */
+    margin-left: -5px;
+    margin-top: -5px;
     background-color: red;
     border-radius: 50%;
-    /* The translate centers the dot on the radar's middle instead of
-       hanging its top left corner there. One catch I know about:
-       GSAP writes its own transform when it scales the blip during
-       a detection, which replaces this centering while the pulse
-       runs, so the dot can sit off center until the pulse ends. */
-    transform: translate(-50%, -50%);
     opacity: 0; /* Hidden initially, and script.js only raises it during a detection */
 }
 
