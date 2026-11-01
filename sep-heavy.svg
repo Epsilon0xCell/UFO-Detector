@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 48" role="img" aria-label="Horizon line separator with a short emerald segment at its centre and a small vane above">
+<line x1="0" y1="34" x2="1200" y2="34" stroke="#8a9098" stroke-width="4"/>
+<line x1="556" y1="34" x2="644" y2="34" stroke="#10e07a" stroke-width="6"/>
+<g><line x1="600" y1="30" x2="600" y2="10" stroke="#c8ccd2" stroke-width="3"/><polygon points="600,6 618,12 600,18 605,12" fill="#c8ccd2"/></g>
+</svg>

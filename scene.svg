@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 260" role="img" aria-label="The pier at sunset: clouds drift, the sun sinks, and at long intervals the emerald flash flares on its last segment">
+<rect width="1200" height="150" fill="#3a2c5e"/>
+<rect y="150" width="1200" height="110" fill="#666c74"/>
+<g fill="#574482"><rect x="-200" y="26" width="560" height="13"><animate attributeName="x" values="-200;-260;-200" dur="38s" repeatCount="indefinite"/></rect></g>
+<g fill="#96605a"><rect x="700" y="58" width="620" height="11"><animate attributeName="x" values="700;760;700" dur="44s" repeatCount="indefinite"/></rect></g>
+<rect y="128" width="1200" height="22" fill="#c47f46"/>
+<polygon points="520,168 680,168 760,260 440,260" fill="#e8b45c" opacity=".4"><animate attributeName="opacity" values=".45;.22;.45" dur="26s" repeatCount="indefinite"/></polygon>
+<circle cx="600" cy="150" r="46" fill="#ffb44a"/>
+<rect y="150" width="1200" height="6" fill="#ffd682"/>
+<g opacity="0"><path d="M566 148 Q600 96 634 148 Q617 138 600 140 Q583 138 566 148 Z" fill="#10e07a"/><circle cx="600" cy="132" r="10" fill="#beffdc"/><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;.55;.62;.7;.78;1" dur="31s" repeatCount="indefinite"/></g>
+<g fill="#14121a"><rect x="238" y="168" width="17" height="52"/><rect x="928" y="168" width="17" height="52"/><ellipse cx="246" cy="162" rx="10" ry="12"/><ellipse cx="936" cy="162" rx="10" ry="12"/></g>
+<g stroke="#3d7a64" stroke-width="7"><line x1="0" y1="196" x2="520" y2="172"/><line x1="1200" y1="196" x2="680" y2="172"/></g>
+<g><line x1="330" y1="182" x2="330" y2="150" stroke="#14121a" stroke-width="4"/><polygon points="330,138 322,150 338,150" fill="#14121a"><animateTransform attributeName="transform" type="rotate" values="-3 330 150; 3 330 150; -3 330 150" dur="17s" repeatCount="indefinite"/></polygon></g>
+<g><rect x="1050" y="176" width="34" height="24" rx="5" fill="#14121a"><animateTransform attributeName="transform" type="rotate" values="0 1067 176; 2 1067 176; 0 1067 176" dur="8s" repeatCount="indefinite"/></rect></g>
+</svg>

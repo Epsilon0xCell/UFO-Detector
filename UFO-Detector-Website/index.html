@@ -3,165 +3,61 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>UFO Detector: what it is, how it runs, where it stops</title>
-<meta name="description" content="A novelty radar page that pretends to scan for UFOs. A green radar sweep animates in a circle, and at random the page flashes UFO DETECTED! with a red">
+<title>UFO-Detector: Chasing the Green Flash</title>
+<meta name="description" content="A novelty browser page that pretends to scan for UFOs and detects nothing real. A watcher's log for one evening: the confession first, then the instrument, the roll, the degraded cases, and the tests.">
 <style>
-:root {
-  --bg: #0e2a22; --panel: #14382d; --ink: #eef0e2;
-  --mut: #1b4b3c;
-  --acc: #f4d06f; --acc2: #ec8a7a;
-  --line: #14382d;
-}
-* { box-sizing: border-box; }
-body { margin: 0; background: var(--bg); color: var(--ink);
-  font-family: Verdana, Geneva, sans-serif; line-height: 1.55; }
-code, pre, .mono { font-family: 'Lucida Console', monospace; }
-a { color: var(--acc2); }
-.hero { padding: 3rem 6vw 1rem; }
-.hero img.banner { width: 100%; height: auto; border: 1px solid var(--line);
-  border-radius: 10px; }
-.logo { width: 92px; height: 92px; border-radius: 18px;
-  border: 1px solid var(--line); }
-h1 { font-size: 2.4rem; margin: 0.4em 0 0.1em; }
-h2 { border-bottom: 2px solid var(--acc); padding-bottom: 0.2em;
-  margin-top: 2em; }
-.lede { font-size: 1.15rem; max-width: 62ch; }
-main { padding: 0 6vw 3rem; max-width: 1180px; margin: 0 auto; }
-.grid { display: grid; gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
-.card { background: var(--panel); border: 1px solid var(--line);
-  border-radius: 12px; padding: 1rem 1.2rem; }
-.card.pop { animation: rise 0.7s ease both; }
-@keyframes rise { from { opacity: 0; transform: translateY(14px); }
-  to { opacity: 1; transform: none; } }
-pre.code { background: #101014; color: #e8e6df; padding: 1rem 1.2rem;
-  border-radius: 12px; overflow-x: auto; font-size: 0.86rem;
-  border-left: 5px solid var(--acc); }
-table { border-collapse: collapse; width: 100%; }
-td, th { border-bottom: 1px solid var(--line); padding: 0.45rem 0.6rem;
-  text-align: left; }
-.shots { display: grid; gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
-.shots img { width: 100%; height: auto; border: 1px solid var(--line);
-  border-radius: 10px; background: #f4f1e8; }
-footer { padding: 2rem 6vw; border-top: 1px solid var(--line);
-  color: var(--mut); }
-.rail { display: flex; gap: 1.2rem; align-items: flex-start; }
-.rail nav { position: sticky; top: 1rem; min-width: 180px; }
-@media (max-width: 760px) { .rail { flex-direction: column; }
-  .rail nav { position: static; } }
-@media (prefers-reduced-motion: reduce) {
-  .card.pop { animation: none; } * { scroll-behavior: auto; } }
+@font-face{font-family:'Arbutus Slab';src:url('fonts/ArbutusSlab.ttf') format('truetype');}
+@font-face{font-family:'Cabin';src:url('fonts/Cabin.ttf') format('truetype');}
+:root{--violet:#3b2d5c;--panel:#565d68;--grey:#6b7280;--white:#f8f7ff;--gold:#f2a541;--emerald:#10e07a;--copper:#b0663e;--coppergreen:#3f7d6b}
+*{box-sizing:border-box} body{margin:0;background:var(--violet);color:var(--white);font-family:'Cabin',sans-serif;line-height:1.65}
+h1,h2{font-family:'Arbutus Slab',serif;font-weight:400}
+.hero{padding:2rem 6vw 0;max-width:1000px;margin:0 auto}.hero img.banner{width:100%;height:auto}
+.logo{width:92px;height:92px}
+main{padding:0 6vw 3rem;max-width:1000px;margin:0 auto}
+.log{background:var(--panel);padding:1.3rem 1.6rem 1rem;margin:2.2rem auto;max-width:56rem;position:relative;border-bottom:4px solid var(--copper)}
+.log:before{content:'';position:absolute;top:12px;left:0;right:0;border-top:2px solid rgba(248,247,255,.35)}
+.log h2{border-bottom:2px solid rgba(248,247,255,.5);padding-bottom:.3rem}
+.log .when{position:absolute;top:14px;right:16px;font-family:'Arbutus Slab',serif;font-size:.85rem;color:#e8ddc8}
+.log.confess{border-left:6px solid var(--emerald)}
+.btn{display:inline-block;background:var(--coppergreen);color:var(--white);font-family:'Arbutus Slab',serif;text-decoration:none;padding:.55rem 1.4rem;border-radius:8px;position:relative;margin:.3rem .4rem .3rem 0;overflow:hidden}
+.btn:before,.btn:after{content:'';position:absolute;top:50%;transform:translateY(-50%);width:9px;height:9px;border-radius:50%;background:#2c5546}
+.btn:before{left:8px}.btn:after{right:8px}
+.btn:hover{background:linear-gradient(100deg,var(--coppergreen) 20%,#c98d4e 50%,var(--coppergreen) 80%)}
+.btn:active{transform:translateY(1px)} .btn:focus-visible{outline:3px solid var(--emerald);outline-offset:3px}
+a{color:#ffd9a0} a:before{content:'➤ ';font-size:.75em;display:inline-block}
+a:hover:before{transform:rotate(90deg)} .btn:before{content:''}
+table{border-collapse:collapse} td{border-top:1px solid rgba(248,247,255,.25);padding:.45rem .8rem .45rem 0}
+.railbreak{display:flex;align-items:flex-end;gap:0;margin:2rem auto;max-width:56rem}
+.railbreak i{display:block;background:var(--coppergreen)} .railbreak i.post{width:10px;height:34px}.railbreak i.bar{height:9px;flex:1;margin-bottom:20px}
+code{background:rgba(0,0,0,.3);padding:.05em .35em;border-radius:3px}
+pre{background:#241a3e;padding:1rem;overflow-x:auto}
+footer{padding:2rem 6vw;max-width:1000px;margin:0 auto}
 </style>
 </head>
-<body class="layout-split">
-<!-- This page exists for UFO-Detector alone: the layout (split-hero),
-     the colors, and the type were picked for this project, not
-     shared with the other project pages. The code block below is
-     copied from the file it names, line for line. If it looks
-     plain, that is because the project is plain, and I would
-     rather the page match the project than dress it up. The one
-     thing I will not do here is oversell: what this project does
-     not do is stated on the page, not hidden from it. -->
+<body>
 <header class="hero">
-  <img class="logo" src="assets/logo.png" alt="UFO Detector logo">
-  <img class="banner" src="assets/banner.png" alt="">
-  <h1>UFO Detector</h1>
-  <p class="mono"><a href="https://github.com/Epsilon0xCell/UFO-Detector">github.com/Epsilon0xCell/UFO-Detector</a></p>
+<img class="logo" src="assets/logo.png" alt="Pier rail and binoculars with the emerald flash segment at the horizon">
+<img class="banner" src="assets/banner.png" alt="Watchers on a pier at sunset, waiting, the title painted on the pier side board">
+<h1>UFO-Detector</h1>
+<p>A watcher's log for one evening. The crowd on the pier came out for one second of colour. This page came out for a dice roll. The log keeps both honest.</p>
+<p><a class="btn" href="https://github.com/Epsilon0xCell/UFO-Detector">Open the repo</a> <a class="btn" href="#confession">The confession</a></p>
 </header>
-
 <main>
-  <section class="rail">
-    <nav aria-label="on this page">
-      <p class="mono"><a href="#run">Run it</a><br>
-      <a href="#files">The files</a><br>
-      <a href="#sheets">The sheets</a><br>
-      <a href="https://github.com/Epsilon0xCell/UFO-Detector">The repo</a></p>
-    </nav>
-    <div>
-      <p class="lede">A novelty radar page that pretends to scan for UFOs. A green radar sweep animates in a circle, and at random the page flashes UFO DETECTED! with a red blip and a sound effect, then goes back to scanning. It detects nothing real; the detections are dice rolls.</p>
-      <div class="grid">
-        <div class="card pop"><h3>What it is</h3>
-          <p>UFO Detector: 7 files, 224 counted
-          lines across JavaScript 84, CSS 68, Markdown 49. One job, done in the
-          open, in files you can read.</p></div>
-        <div class="card pop"><h3>The biggest piece</h3>
-          <p><code>script.js</code> carries the most
-          lines. If the project grows, that file is where the growth
-          lands first, for better or worse.</p></div>
-        <div class="card pop"><h3>The honest gap</h3>
-          <p>No test files yet. That is the honest gap, and the roadmap in the visuals folder says what the first one should cover.</p></div>
-      </div>
-      <section id="run">
-        <h2>Run it</h2>
-        <p>The repo README has the exact commands for this one. The
-        shape is the shape for most of my projects: clone it, read the
-        top file first so you know what will happen, then run it on
-        something you do not mind breaking.</p>
-        <p class="mono">$ git clone https://github.com/Epsilon0xCell/UFO-Detector.git<br>$ cd UFO-Detector</p>
-      </section>
-      
-  <section aria-label="real code">
-    <h2>The code, as it sits in the repo</h2>
-    <p>From <code>script.js</code>, line 22 on. I did
-    not tidy it for the page. What you see is what the file has.</p>
-    <pre class="code"><code>};
-
-function playSound(sound) {
-    if (sound) {
-        try {
-            sound.play();
-        } catch (err) {
-            // Audio is decorative here; never let it break detection.
-        }
-    }
-}
-
-// Start ambient sound
-playSound(sounds.ambient);
-
-function animateBlip() {
-    if (window.gsap) {
-        // Animate blip
-        window.gsap.to(blip, {
-            opacity: 1,
-            scale: 2.5,
-            duration: 0.3,</code></pre>
-  </section>
-      <section id="files">
-        <h2>The files that matter</h2>
-        <table><tr><th>File</th><th>Lines</th></tr>
-        <tr><td><code>script.js</code></td><td>84</td></tr>
-        <tr><td><code>style.css</code></td><td>68</td></tr>
-        <tr><td><code>README.md</code></td><td>49</td></tr>
-        <tr><td><code>index.html</code></td><td>23</td></tr>
-        <tr><td><code>banner.png</code></td><td>0</td></tr>
-        <tr><td><code>logo.png</code></td><td>0</td></tr>
-        </table>
-        <p>Names doing the work: <span class="mono">playSound, animateBlip, randomDetection</span>.</p>
-      </section>
-      <section id="sheets">
-        <h2>Drawn by hand</h2>
-        <p>I sketch my projects on notebook paper so I have to
-        understand them well enough to draw them. The full set,
-        with the counts and how they were counted, is the
-        <a href="https://github.com/Epsilon0xCell/UFO-Detector/tree/main/UFO-Detector-Visuals">UFO-Detector-Visuals</a>
-        folder in the repo. Nothing is drawn over the binder holes.
-        That is a rule, not a style.</p>
-        <div class="shots">
-          <img src="assets/architecture.png" alt="Hand drawn architecture sheet for UFO Detector">
-          <img src="assets/flowchart.png" alt="Hand drawn flowchart sheet for UFO Detector">
-          <img src="assets/product-map.png" alt="Hand drawn product map sheet for UFO Detector">
-        </div>
-      </section>
-    </div>
-  </section>
+<div class="railbreak" aria-hidden="true"><i class="post"></i><i class="bar"></i><i class="post"></i><i class="bar"></i><i class="post"></i></div>
+<section class="log confess" id="confession"><span class="when">Log entry one</span><h2>The confession, first</h2><p>UFO-Detector is a novelty browser page that pretends to scan for UFOs and detects nothing real. Its detections are dice rolls. The files are <code>index.html</code>, <code>script.js</code>, <code>style.css</code>, the Node test file <code>detector.test.mjs</code>, and an MIT license.</p></section>
+<section class="log"><span class="when">Log entry two</span><h2>The instrument as built</h2><p>A circular radar 200 pixels across, dark ground, bright green ring, with a sweep drawn as a rotating gradient square clipped to the circle, turning once every 2 seconds. Under it a message line that reads <code>Scanning for UFOs...</code> while it works. The page takes GSAP 3.12.5 and Howler 2.2.4 from a public content delivery network, and two sound effects from Mixkit, an ambient loop at volume 0.2 that starts on page load and a detection sound at volume 0.5.</p></section>
+<section class="log"><span class="when">Log entry three</span><h2>The roll</h2><table>
+<tr><td>Scan check</td><td>every 3.5 seconds</td></tr>
+<tr><td>Detection roll</td><td>0.5 seconds after each check</td></tr>
+<tr><td>Chance of success</td><td>30 percent on every roll</td></tr>
+<tr><td>On a success</td><td>message changes to UFO DETECTED!, the detection sound plays if Howler arrived, and a red blip 10 pixels wide at the centre of the radar pulses under GSAP, scaling to 2.5 over 0.3 second legs, repeated three times with yoyo, then fading over 0.5 seconds</td></tr>
+<tr><td>After 3 seconds</td><td>the message returns to Scanning for UFOs... and the watch resumes</td></tr>
+<tr><td>Ticks during a detection</td><td>dropped rather than queued</td></tr>
+</table></section>
+<div class="railbreak" aria-hidden="true"><i class="post"></i><i class="bar"></i><i class="post"></i></div>
+<section class="log"><span class="when">Log entry four</span><h2>Running it, and the degraded cases</h2><p>Open <code>index.html</code> in a browser, or serve the folder with <code>python3 -m http.server</code> and visit localhost port 8000. If a content delivery network is unreachable the page still loads, still scans, and still detects, only silently and without the pulse flourish: the blip is shown directly for 1200 milliseconds and hidden again. Browsers may hold the ambient sound until the first click or tap, and the code accepts that instead of retrying.</p><p>One repair, in log form: the blip was once centred with a CSS translate, which GSAP overwrote when it scaled the blip, so the dot could sit off centre while pulsing. It is now centred with negative margins of minus 5 pixels, half its size, which a transform cannot replace. That fault was suspected and logged, never actually observed on screen.</p></section>
+<section class="log"><span class="when">Log entry five</span><h2>Tests, and the limit of what is known</h2><p>Ten tests, all passing, run with <code>node --test</code>, loading the real script.js in Node against stubbed document, window, and timer objects. They cover the 3.5 second check and 0.5 second roll delay, a missed roll, detection with and without GSAP, ticks dropped during a detection, both sounds built and the ambient loop started when Howler is present, detection surviving a missing Howler or a sound that throws, the margin centring, and the element ids and network scripts in index.html.</p><p>The closing line of the log states the boundary plainly: the page was not run in a real browser for this pass, so the visual result and the actual audio were not observed, only the logic was verified.</p></section>
 </main>
-<footer>
-  <p>UFO Detector is one of my projects. This page was written
-  from the repo itself on 2026-10-30: the counts are the
-  repo's counts, the code is the repo's code, and the gaps are the
-  repo's gaps.</p>
-</footer>
+<footer><p>The sun is gone and the watchers are drifting home along the boards. On a screen left open somewhere, the green ring keeps turning and the dice keep falling.</p></footer>
 </body>
 </html>

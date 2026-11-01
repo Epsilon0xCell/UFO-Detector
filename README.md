@@ -1,11 +1,20 @@
-![UFO Detector banner](banner.png)
+![Sunset from the pier: the emerald flash held on the sun's last segment](intro-banner.png)
+
+
 
 # UFO-Detector
+
+![Wordmark banner: watchers waiting on the pier, title painted on the side board](banner.png)
+
+![Animated scene](scene.svg)
 
 A novelty radar page that pretends to scan for UFOs. A green radar sweep
 animates in a circle, and at random the page flashes `UFO DETECTED!` with
 a red blip and a sound effect, then goes back to scanning. It detects
 nothing real; the detections are dice rolls.
+
+
+![Separator](sep-heavy.svg)
 
 ## Run
 
@@ -21,6 +30,9 @@ from Mixkit, so the animations and sounds need network access. If a CDN
 is unreachable the page still loads and still scans and detects, only
 silently and without the blip animation flourish: the blip is shown and
 hidden directly instead.
+
+
+![Separator](sep-light.svg)
 
 ## How it behaves
 
@@ -42,6 +54,9 @@ hidden directly instead.
   removes the conflict in the stylesheet itself rather than waiting
   to catch it on screen.
 
+
+![Separator](sep-heavy.svg)
+
 ## Tests
 
 ```bash
@@ -59,6 +74,9 @@ working when Howler is missing or a sound throws on play, the
 margin centering above, and the ids and CDN scripts in
 `index.html` that the script depends on.
 
+
+![Separator](sep-light.svg)
+
 ## Files
 
 - `index.html` - the page
@@ -68,6 +86,9 @@ margin centering above, and the ids and CDN scripts in
 - `LICENSE` - MIT license
 - `logo.png`, `banner.png` - project branding
 
+
+![Separator](sep-heavy.svg)
+
 ## Honest limits
 
 The logic is verified headlessly by the suite above, including the
@@ -75,3 +96,5 @@ cases where one or both CDN libraries are missing. The page was not
 run in a real browser for this pass, so the visual result (the
 centered blip included) and the actual audio playback were not
 observed on screen.
+
+> **Log margin note:** this page detects nothing real, its sounds and animation libraries need network access, and it was not observed in a real browser for this pass.
