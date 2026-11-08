@@ -3,61 +3,60 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>UFO-Detector: Chasing the Green Flash</title>
-<meta name="description" content="A novelty browser page that pretends to scan for UFOs and detects nothing real. A watcher's log for one evening: the confession first, then the instrument, the roll, the degraded cases, and the tests.">
+<title>UFO-Detector: The Night Watch</title>
+<meta name="description" content="A novelty radar page that pretends to scan for UFOs: a green sweep, a scan check every 3.5 seconds, and a 30 percent dice roll that sometimes cries detection.">
 <style>
-@font-face{font-family:'Arbutus Slab';src:url('fonts/ArbutusSlab.ttf') format('truetype');}
-@font-face{font-family:'Cabin';src:url('fonts/Cabin.ttf') format('truetype');}
-:root{--violet:#3b2d5c;--panel:#565d68;--grey:#6b7280;--white:#f8f7ff;--gold:#f2a541;--emerald:#10e07a;--copper:#b0663e;--coppergreen:#3f7d6b}
-*{box-sizing:border-box} body{margin:0;background:var(--violet);color:var(--white);font-family:'Cabin',sans-serif;line-height:1.65}
-h1,h2{font-family:'Arbutus Slab',serif;font-weight:400}
-.hero{padding:2rem 6vw 0;max-width:1000px;margin:0 auto}.hero img.banner{width:100%;height:auto}
-.logo{width:92px;height:92px}
-main{padding:0 6vw 3rem;max-width:1000px;margin:0 auto}
-.log{background:var(--panel);padding:1.3rem 1.6rem 1rem;margin:2.2rem auto;max-width:56rem;position:relative;border-bottom:4px solid var(--copper)}
-.log:before{content:'';position:absolute;top:12px;left:0;right:0;border-top:2px solid rgba(248,247,255,.35)}
-.log h2{border-bottom:2px solid rgba(248,247,255,.5);padding-bottom:.3rem}
-.log .when{position:absolute;top:14px;right:16px;font-family:'Arbutus Slab',serif;font-size:.85rem;color:#e8ddc8}
-.log.confess{border-left:6px solid var(--emerald)}
-.btn{display:inline-block;background:var(--coppergreen);color:var(--white);font-family:'Arbutus Slab',serif;text-decoration:none;padding:.55rem 1.4rem;border-radius:8px;position:relative;margin:.3rem .4rem .3rem 0;overflow:hidden}
-.btn:before,.btn:after{content:'';position:absolute;top:50%;transform:translateY(-50%);width:9px;height:9px;border-radius:50%;background:#2c5546}
-.btn:before{left:8px}.btn:after{right:8px}
-.btn:hover{background:linear-gradient(100deg,var(--coppergreen) 20%,#c98d4e 50%,var(--coppergreen) 80%)}
-.btn:active{transform:translateY(1px)} .btn:focus-visible{outline:3px solid var(--emerald);outline-offset:3px}
-a{color:#ffd9a0} a:before{content:'➤ ';font-size:.75em;display:inline-block}
-a:hover:before{transform:rotate(90deg)} .btn:before{content:''}
-table{border-collapse:collapse} td{border-top:1px solid rgba(248,247,255,.25);padding:.45rem .8rem .45rem 0}
-.railbreak{display:flex;align-items:flex-end;gap:0;margin:2rem auto;max-width:56rem}
-.railbreak i{display:block;background:var(--coppergreen)} .railbreak i.post{width:10px;height:34px}.railbreak i.bar{height:9px;flex:1;margin-bottom:20px}
-code{background:rgba(0,0,0,.3);padding:.05em .35em;border-radius:3px}
-pre{background:#241a3e;padding:1rem;overflow-x:auto}
-footer{padding:2rem 6vw;max-width:1000px;margin:0 auto}
+@font-face{font-family:'Keania One';src:url('fonts/KeaniaOne-400.woff2') format('woff2');font-weight:400}
+@font-face{font-family:'Sarabun';src:url('fonts/Sarabun-400.woff2') format('woff2');font-weight:400}
+@font-face{font-family:'Sarabun';src:url('fonts/Sarabun-600.woff2') format('woff2');font-weight:600}
+@font-face{font-family:'Sarabun';src:url('fonts/Sarabun-700.woff2') format('woff2');font-weight:700}
+:root{--navy:#0b1526;--navy2:#12233d;--panel:#101f36;--ink:#dbe7f5;--mut:#8fa8c4;--green:#37e08b;--greendk:#1d9e5f;--steel:#7d93ad;--red:#e5483c;--line:#24405f}
+*{box-sizing:border-box} body{margin:0;background:var(--navy);color:var(--ink);font-family:'Sarabun',sans-serif;line-height:1.65}
+h1,h2{font-family:'Keania One',serif;color:#eaf4ff;font-weight:400}
+.hero{background:linear-gradient(170deg,#060d1a 0%,var(--navy) 55%,var(--navy2) 100%);padding:2.2rem 6vw 1.8rem}
+.hero .inner{max-width:1020px;margin:0 auto}
+.hero img.wide{width:100%;height:auto;display:block;border:6px solid var(--panel);border-radius:4px;box-shadow:0 4px 18px rgba(0,0,0,.55)}
+.hero .row{display:flex;gap:1.1rem;align-items:flex-start;margin-top:1.2rem}
+.hero .row img{width:92px;height:92px;object-fit:cover;border-radius:6px;border:3px solid var(--panel);background:var(--panel)}
+.hero h1{margin:.1rem 0 .3rem;font-size:2.6rem}
+.hero p{max-width:44rem;color:#c3d4e8}
+main{padding:0 6vw 3rem;max-width:1020px;margin:0 auto}
+.panel{background:var(--panel);border:1px solid var(--line);border-top:6px solid var(--green);border-radius:6px;padding:1.2rem 1.5rem;margin:1.6rem 0;box-shadow:0 2px 10px rgba(0,0,0,.4)}
+.panel.alarm{border-top-color:var(--red)}
+.panel h2{margin:.1rem 0 .5rem;font-size:1.8rem}
+.panel p{margin:.4rem 0}
+.strip{background:#060d1a;color:#b9f4d4;padding:1rem 1.2rem;overflow-x:auto;font-family:ui-monospace,Menlo,monospace;border-radius:4px;border-top:6px solid var(--green)}
+.btn{display:inline-block;background:var(--greendk);color:#eafff3;font-family:'Sarabun',sans-serif;font-weight:700;text-decoration:none;padding:.55rem 1.1rem;border-radius:999px;margin:.3rem .4rem .3rem 0}
+.btn:hover{background:#157347;color:#eafff3}.btn:active{transform:translateY(2px)}
+.btn:focus-visible{outline:2px dashed var(--green);outline-offset:3px}
+a{color:var(--green);font-weight:700}
+table{border-collapse:collapse}td{padding:.2rem .9rem .2rem 0;vertical-align:top}
+td:first-child{font-weight:700;color:var(--green);white-space:nowrap}
+ul{margin:.4rem 0;padding-left:1.2rem}li{margin:.25rem 0}
+.small{font-size:.92rem}
+footer{padding:0 6vw 2.5rem;max-width:1020px;margin:0 auto;color:var(--mut)}
 </style>
 </head>
 <body>
 <header class="hero">
-<img class="logo" src="assets/logo.png" alt="Pier rail and binoculars with the emerald flash segment at the horizon">
-<img class="banner" src="assets/banner.png" alt="Watchers on a pier at sunset, waiting, the title painted on the pier side board">
-<h1>UFO-Detector</h1>
-<p>A watcher's log for one evening. The crowd on the pier came out for one second of colour. This page came out for a dice roll. The log keeps both honest.</p>
-<p><a class="btn" href="https://github.com/Epsilon0xCell/UFO-Detector">Open the repo</a> <a class="btn" href="#confession">The confession</a></p>
+<div class="inner">
+<img class="wide" src="assets/intro-banner.png" alt="The radar antenna caught mid turn close overhead, a red warning lamp flaring on its hut, the hut windows glowing green, and one bright light burning a moment brighter in the star field">
+<div class="row"><img src="assets/logo.png" alt="UFO-Detector logo: a flat emblem of a white radar antenna bar on its rooftop mount over a dark hut silhouette with one small green lamp lit, against a deep navy night sky"><div><h1>UFO-Detector</h1><p>A novelty radar page that pretends to scan for UFOs. A green radar sweep animates in a circle on an empty night sky, and at random the page flashes UFO DETECTED! with a red blip and a sound effect, then goes back to scanning. It detects nothing real; the detections are dice rolls, and the watch finds things whether or not they are there.</p><p><a class="btn" href="https://github.com/Epsilon0xCell/UFO-Detector">Open the repo</a> <a class="btn" href="#proof">The tests</a></p></div></div>
+</div>
 </header>
 <main>
-<div class="railbreak" aria-hidden="true"><i class="post"></i><i class="bar"></i><i class="post"></i><i class="bar"></i><i class="post"></i></div>
-<section class="log confess" id="confession"><span class="when">Log entry one</span><h2>The confession, first</h2><p>UFO-Detector is a novelty browser page that pretends to scan for UFOs and detects nothing real. Its detections are dice rolls. The files are <code>index.html</code>, <code>script.js</code>, <code>style.css</code>, the Node test file <code>detector.test.mjs</code>, and an MIT license.</p></section>
-<section class="log"><span class="when">Log entry two</span><h2>The instrument as built</h2><p>A circular radar 200 pixels across, dark ground, bright green ring, with a sweep drawn as a rotating gradient square clipped to the circle, turning once every 2 seconds. Under it a message line that reads <code>Scanning for UFOs...</code> while it works. The page takes GSAP 3.12.5 and Howler 2.2.4 from a public content delivery network, and two sound effects from Mixkit, an ambient loop at volume 0.2 that starts on page load and a detection sound at volume 0.5.</p></section>
-<section class="log"><span class="when">Log entry three</span><h2>The roll</h2><table>
-<tr><td>Scan check</td><td>every 3.5 seconds</td></tr>
-<tr><td>Detection roll</td><td>0.5 seconds after each check</td></tr>
-<tr><td>Chance of success</td><td>30 percent on every roll</td></tr>
-<tr><td>On a success</td><td>message changes to UFO DETECTED!, the detection sound plays if Howler arrived, and a red blip 10 pixels wide at the centre of the radar pulses under GSAP, scaling to 2.5 over 0.3 second legs, repeated three times with yoyo, then fading over 0.5 seconds</td></tr>
-<tr><td>After 3 seconds</td><td>the message returns to Scanning for UFOs... and the watch resumes</td></tr>
-<tr><td>Ticks during a detection</td><td>dropped rather than queued</td></tr>
-</table></section>
-<div class="railbreak" aria-hidden="true"><i class="post"></i><i class="bar"></i><i class="post"></i></div>
-<section class="log"><span class="when">Log entry four</span><h2>Running it, and the degraded cases</h2><p>Open <code>index.html</code> in a browser, or serve the folder with <code>python3 -m http.server</code> and visit localhost port 8000. If a content delivery network is unreachable the page still loads, still scans, and still detects, only silently and without the pulse flourish: the blip is shown directly for 1200 milliseconds and hidden again. Browsers may hold the ambient sound until the first click or tap, and the code accepts that instead of retrying.</p><p>One repair, in log form: the blip was once centred with a CSS translate, which GSAP overwrote when it scaled the blip, so the dot could sit off centre while pulsing. It is now centred with negative margins of minus 5 pixels, half its size, which a transform cannot replace. That fault was suspected and logged, never actually observed on screen.</p></section>
-<section class="log"><span class="when">Log entry five</span><h2>Tests, and the limit of what is known</h2><p>Ten tests, all passing, run with <code>node --test</code>, loading the real script.js in Node against stubbed document, window, and timer objects. They cover the 3.5 second check and 0.5 second roll delay, a missed roll, detection with and without GSAP, ticks dropped during a detection, both sounds built and the ambient loop started when Howler is present, detection surviving a missing Howler or a sound that throws, the margin centring, and the element ids and network scripts in index.html.</p><p>The closing line of the log states the boundary plainly: the page was not run in a real browser for this pass, so the visual result and the actual audio were not observed, only the logic was verified.</p></section>
+<section class="panel"><h2>Run it</h2><div class="strip">python3 -m http.server<br># then visit http://localhost:8000/</div><p>Or just open <code>index.html</code> in a browser. The page loads GSAP and Howler from public CDNs and the two sound effects from Mixkit, so the animations and sounds need network access. If a CDN is unreachable the page still loads and still scans and detects, only silently and without the blip animation flourish: the blip is shown and hidden directly instead.</p></section>
+<section class="panel alarm"><h2>How it behaves</h2><table>
+<tr><td>Every 3.5 seconds</td><td>a scan check runs, with the detection roll delayed 0.5 seconds after each check.</td></tr>
+<tr><td>30 percent</td><td>the chance each roll has of a detection.</td></tr>
+<tr><td>On a detection</td><td>the message changes to UFO DETECTED!, the detection sound plays (when Howler loaded), and the blip pulses.</td></tr>
+<tr><td>After 3 seconds</td><td>the message returns to Scanning for UFOs... and scanning resumes.</td></tr>
+</table><p>An ambient loop starts on page load when Howler loaded; browsers may hold audio until the first interaction with the page.</p></section>
+<section class="panel"><h2>The blip stays centered</h2><p>The blip is centered on the radar with negative margins, half its 10px size. It used to be centered with a CSS translate, and GSAP writes its own transform when it scales the blip for the pulse, so the centering could be replaced for the length of a detection and the dot could sit off center while it pulsed. Margins are not a transform, so the pulse cannot replace them now. That fault was logged as suspected and never observed in a browser; the fix removes the conflict in the stylesheet itself rather than waiting to catch it on screen.</p></section>
+<section class="panel" id="proof"><h2>The tests</h2><div class="strip">node --test</div><p>10 tests, all passing, in <code>detector.test.mjs</code>. They load the real <code>script.js</code> in Node with stubbed document, window, and timer objects: the 3.5 second check and 0.5 second roll delay, a missed roll, a detection with GSAP (pulse values and the 3 second reset), a detection without GSAP, ticks dropped during a detection, both sounds built and the ambient loop started when Howler is present, detection still working when Howler is missing or a sound throws on play, the margin centering, and the ids and CDN scripts in <code>index.html</code> that the script depends on.</p></section>
+<section class="panel"><h2>Honest limits</h2><p>The logic is verified headlessly by the suite above, including the cases where one or both CDN libraries are missing. The page was not run in a real browser for the recorded pass, so the visual result (the centered blip included) and the actual audio playback were not observed on screen.</p></section>
+<section class="panel"><h2>The files</h2><p class="small"><code>index.html</code>, the page. <code>script.js</code>, the scan loop, detection roll, sounds, and blip animation. <code>style.css</code>, the layout and the radar sweep animation. <code>detector.test.mjs</code>, the node:test suite. <code>LICENSE</code>, the MIT license. The full notes are in the <a href="https://github.com/Epsilon0xCell/UFO-Detector">repo README</a>.</p></section>
 </main>
-<footer><p>The sun is gone and the watchers are drifting home along the boards. On a screen left open somewhere, the green ring keeps turning and the dice keep falling.</p></footer>
+<footer><p>The sweep goes round every few seconds, and sometimes, at random, the watch declares a detection. Nothing up there has been consulted.</p></footer>
 </body>
 </html>

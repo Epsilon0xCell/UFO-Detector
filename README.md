@@ -1,10 +1,12 @@
-![Sunset from the pier: the emerald flash held on the sun's last segment](intro-banner.png)
+![Intro scenery: the radar antenna caught mid turn close overhead, a red warning lamp flaring on its hut, the hut windows glowing green, and one bright light burning a moment brighter in the star field](intro-banner.png)
 
 
 
 # UFO-Detector
 
-![Wordmark banner: watchers waiting on the pier, title painted on the side board](banner.png)
+![Wordmark banner: a rooftop at night with a large white radar antenna bar over its base hut, the hut window glowing green, under a star field with the Milky Way overhead](banner.png)
+
+<p align="center"><img src="logo.png" alt="UFO-Detector logo: a flat emblem of a white radar antenna bar on its rooftop mount over a dark hut silhouette with one small green lamp lit, against a deep navy night sky" width="200"></p>
 
 ![Animated scene](scene.svg)
 
